@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp-backend-CKA
+  labels:
+    app: myapp
+    type: back-end
+spec:
+  containers:
+    - name: nginx-conatiner
+      image: nginx
