@@ -1,0 +1,16 @@
+bases:
+  - ../../base
+resources:
+  - namespace.yaml
+patches:
+  - pod.yaml
+configMapGenerator:
+  - name: myapp-config
+    namespace: dev
+    files:
+      - ./configs/config.json
+patchesStrategicMerge:
+  - environment.yaml
+images:
+  - name: nginx
+    newTag: 3.0.0
