@@ -4,6 +4,20 @@ Collect of files and notes used in preparation of CKA exam.
 
 ## TLS
 
+### Useful Commands
+
+```shell 
+# Read contents of cert
+openssl x509 -in <PATH> -tect -noout 
+
+# Encoding with openssl
+cat <FILE>.csr | openssl base64
+
+# Disable line wrapping
+base64 --wrap=0 <FILE>.csr
+```
+
+
 ### Cluster CA
 
 ```shell
@@ -227,7 +241,22 @@ kubeadm upgrade apply v1.20.0
 ```shell
 apt install kubelet=v1.20.0-00
 ```
-to upgrade node config
+
 ```shell
+# To upgrade node config
 kubeadm upgrade node
+```
+## KubeConfig
+```shell
+# Useful Info
+KubeConfig is used to link users and clusters.
+
+You should always use full path for certificate-authority field.
+Alternatively you can use certificate-authority-data instead and supply base64 encoded value.
+
+# View Config
+kubectl config view
+
+# Set context
+kubectl config use-context <NAME>
 ```
