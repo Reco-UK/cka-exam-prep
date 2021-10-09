@@ -15,6 +15,8 @@ Once updated api server will need to be restarted.
 Role based access control
 Attributes assigned to the role and then users and or groups are assigned to the roles.
 
+When working with the core group the apiGroups value can be left empty.
+
 ### Webhook
 
 Off load authorization to third party service.
