@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-with-svc-acc
+spec:
+  containers:
+    - name: pod-with-svc-acc
+      image: busybox
+      command: ["sleep","1800"]
+  serviceAccountName: pod-svc-acc

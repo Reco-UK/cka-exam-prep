@@ -17,6 +17,12 @@ Attributes assigned to the role and then users and or groups are assigned to the
 
 When working with the core group the apiGroups value can be left empty.
 
+## Cluster scope
+
+Roles can be scoped at a cluster wide level and can give control over cluster wide resources such as nodes.
+
+CLuster level roles and bindings can also be used for namespace scoped resources.
+
 ### Webhook
 
 Off load authorization to third party service.
