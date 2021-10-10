@@ -8,3 +8,4 @@ spec:
       image: busybox
       command: ["sleep","1800"]
   serviceAccountName: pod-svc-acc
+  # automountServiceAccountToken: false # Comment in the above if you do not wish for token to be mounted within pod.
