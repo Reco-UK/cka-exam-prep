@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: frontend-policy
+spec:
+  posSelector:
+    matchLabels:
+      role: frontend
+  policyType:
+    - Egress
+    egress:
+      - to:
+          - podSelector:
+              matchLabels:
+                name: api-pod
+        ports:
+          - protocol: TCP
+            port: 8080
+      - to:
+          - podSelector:
+              matchLabels:
+                name: db-pod
+          - protocol: TCP
+            port: 3306
+
+

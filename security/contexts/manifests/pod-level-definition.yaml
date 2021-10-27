@@ -3,6 +3,8 @@ kind: Pod
 metadata:
   name: pod-nginx
 spec:
+  securityContext:
+    runAsUser: 1000
   containers:
     - name: pod-nginx
       image: nginx

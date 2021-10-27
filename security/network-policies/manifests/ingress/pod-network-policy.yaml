@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: db-policy
+spec:
+  posSelector:
+    matchLabels:
+      role: db
+  policyType:
+    - Ingress
+    ingress:
+      - from:
+          - podSelector:
+              matchLabels:
+                name: api-pod
+        ports:
+          - protocol: TCP
+            port: 3306
+
