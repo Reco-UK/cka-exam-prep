@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-volume
+spec:
+  containers:
+    - name: busybox
+      image: busybox
+      command: ["/bin/bash", "-c"]
+      args: ["echo hello-world >> /opt/hello-world.txt;"]
+      volumeMounts:
+        - mountPath: /opt
+          name: pod-data-volume
+  volumes:
+    - name: pod-data-volume
+      persistentVolumeClaim:
+        claimName: my-claim
