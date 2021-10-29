@@ -1,26 +1,19 @@
-# CNI
+# Cluster Networking
 
-The CNI or container network interface is a set of standards to create plugins for the container runtimes.
+A standard Kubernetes cluster will exist of Masters and worker nodes.
 
-The CNI will define the requirements of both the plugin and the container runtimes, so what the plugin will expose and how the container runtimes will use them.
+Each of these machines must have at lease one interface attached to the network with address assigned and also have unique hostname and mac address.
 
-CNI comes with a number of builtin plugins such as:
- - Bridge
- - VLAN
- - IPVLAN
- - MACVLAN
- - WINDOWS
+The following ports will also need to be accessible between the machines.
 
-The above plugins contains all the required steps but expose the functionality via a simple interface.
+The Kube-api on the master will be listening on 6443 and will need to be accessible to all the components (kube-scheduler, kube-controller-manager etc) running on the master, plus kubectl and the kubelet running on each of the nodes.
 
-There are also third party plugins available, such as:
- - Flannel
- - cilium
- - NSX
- - weaveworks
+Kube-scheduler is listening on 10251.
+Kube-contaoller-manager is on 10252.
+ETCD is on 2379.
 
-But Docker itself does not follow the CNI standards, but instead has its own set of standards called CNM (Container Network Model).
+The above ports will be the same for each master node you are running, but when running multiple masters you will also need to open up port 2380 for ETCD replication.
 
-Because of this, it is not possible to directly start a container and attach it to a cni based network.
+The kubelet itself will be listening 10250.
 
-To do this you would have to start the docker container on the none network and then invoke the plugin yourself. (This is how it works on Kubernetes)
+The nodes will expose services on port ranging between 30000-32767.
