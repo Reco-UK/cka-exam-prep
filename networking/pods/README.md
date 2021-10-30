@@ -77,3 +77,5 @@ The relating network config would look something similar to the following:
 ```
 
 The type *local-host* means that the ips will be managed locally on the machine in question.
+
+CNI offers two built in plugins for IPAM, host-local as shown above and dhcp.
