@@ -46,6 +46,8 @@ ip link add v-net-0 type bridge
 # Bring interface up
 ip link set dev v-net-0 up
 
+# Assign ip address range to interface
+ip addr add 10.244.1.1/24 dev v-net-0
 
 # Create pipe from ns to bridge
 ip link add veth-red type veth peer name veth-red-br

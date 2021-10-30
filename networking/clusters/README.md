@@ -12,8 +12,27 @@ Kube-scheduler is listening on 10251.
 Kube-contaoller-manager is on 10252.
 ETCD is on 2379.
 
-The above ports will be the same for each master node you are running, but when running multiple masters you will also need to open up port 2380 for ETCD replication.
+The above ports will be the same for each master node you are running, but when running multiple masters you will also need to open up port 2380 for ETCD peer-to-peer communication.
 
 The kubelet itself will be listening 10250.
 
 The nodes will expose services on port ranging between 30000-32767.
+
+## Useful Commands
+
+```shell
+# Show network interfaces
+ifconfig -a
+
+# Show details of interface
+ifconfig <NAME>
+
+# File where interfaces are defined
+cat /etc/network/interfaces
+
+# Get mac address ir status of interface
+ip link
+
+# Run on remote machine
+ssh node01 ifconfig <NAME>
+```

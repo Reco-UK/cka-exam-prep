@@ -1,4 +1,4 @@
-# CNI
+# CNI - Weave (Weaveworks)
 
 The CNI or container network interface is a set of standards to create plugins for the container runtimes.
 
