@@ -33,7 +33,7 @@ ip -n <POD> route add default via 10.244.(1,2,3).1
 ip -n <POD> link set veth-<POD> up
 #For node to node comms
 # Add route for each ns on each node to each node interface
-# But the preferred option would be to use a network router
+# But the preferred option would be to use a network router (for small networks)
 ip route add 10.244.(1,2,3).2 via 192.168.1.(2,3,4) (Target Node eth)
 ```
 
