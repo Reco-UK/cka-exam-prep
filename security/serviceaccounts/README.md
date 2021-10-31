@@ -29,7 +29,7 @@ When the service account is used for an application running on the same cluster 
 
 You can get the location of the mount by describe the running pod, this usually be:
 
-```/var/run/secrets/kubernetes.io/serviceaccount```
+```/var/run/secrets/Kubernetes.io/serviceaccount```
 
 which will contain the ca and token.
 

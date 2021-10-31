@@ -24,7 +24,7 @@ Images follow the naming standard of your provider.
 
 When working with any registry, you will need to first authenticate before you can start using the images.
 
-To do this in a kubernetes cluster, you will first have to create a security with the registry details:
+To do this in a Kubernetes cluster, you will first have to create a security with the registry details:
 
 ```shell
 # The docker-registry secret is a built-in type used to store docker credentials.

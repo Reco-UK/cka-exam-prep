@@ -1,6 +1,6 @@
 # Namespaces
 
-Network namespaces work in a similar way to kubernetes namespace in that they shield a section of the network from outside network configuration
+Network namespaces work in a similar way to Kubernetes namespace in that they shield a section of the network from outside network configuration
 and allocated it, its own interface, routing and arp tables.
 
 ```shell

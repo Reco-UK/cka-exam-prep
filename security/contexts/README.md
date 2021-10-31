@@ -2,7 +2,7 @@
 
 When using docker you can specify security standards to be used by the running container i.e. user id etc
 
-This can also be done within kubernetes using security contexts, but can be configured at either a container or pod level.
+This can also be done within Kubernetes using security contexts, but can be configured at either a container or pod level.
 
 If defined at a pod level it will take effect on all running containers within the pod.
 

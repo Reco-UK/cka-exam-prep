@@ -60,3 +60,59 @@ CNAME = Holds alias to an existing entry (name to name)
 
 nslookup - does not support /etc/hosts
 dig
+
+
+### DNS in Kubernetes
+
+DNS of the nodes within a Kubernetes cluster is handled either your org or te cloud provider.
+
+When you provision a Kubernetes cluster it will come with a coreDNS server running, unless you're creating the cluster manually, and you are required the DNS server yourself. 
+
+Kube-DNS is responsible for storing ips and names when pods and services are created.
+
+Pods which exist in the same namespace as each other can communicate using the name of the services.
+
+Pods which exist in separate namespaces must append the namespace when communicating with a services in another namespace. i.e. <SVC>.<NS>
+
+Services are grouped under the sub-domain svc:
+
+| Hostname | Namespace | Type | IP Address    |
+| -------- | --------- | ---- | ------------- |
+| web      | apps      | svc  | 10.107.37.188 |
+
+Then finally all services and pods are grouped under the root domain cluster.local:
+
+| Hostname | Namespace | Type | Root          | IP Address    |
+| -------- | --------- | ---- | ------------- | ------------- |
+| web      | apps      | svc  | cluster.local | 10.107.37.188 |
+
+### Pod DNS
+
+Pod dns is not enabled by default within Kubernetes, but
+
+When this is enabled the hostname will be set to the ip address of the Pod but with dots replace with dashes and will be
+grouped under the pod subdomain:
+
+| Hostname    | Namespace | Type | Root          | IP Address  |
+| ----------- | --------- | ---- | ------------- | ----------- |
+| 10-244-10-3 | apps      | pod  | cluster.local | 10.244.10.3 |
+
+
+## CoreDNS
+
+Prior to version 1.12 the dns server was known as kube-dns, but from 1.12+ the preferred option is coreDNS. 
+
+CoreDNS runs as a pod (replicaset) within the cluster.
+
+Kubernetes coreDNS config can be found within /etc/coredns/Corefile, the config contains various plugins and configs, including the Kubernetes config.
+
+When coredns is deployed a service will also be created and the ip address of this service is set within the /etc/resolv.conf on the pods, this is 
+done automatically by the kubelet when the pods are created. (The kubelet has the dns service address in its config)
+
+The resolv.conf will also have the following search domains:
+
+```shell
+search default.svc.cluster.local svc.cluster.local cluster.local
+```
+
+When working pods you will have to specify the full FQDN as pod domain is not defined within search list.

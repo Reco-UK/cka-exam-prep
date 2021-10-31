@@ -1,0 +1,4 @@
+apiVersion: v1
+kind: RoleBinding
+metadata:
+  name: nginx-ingress-role-binding

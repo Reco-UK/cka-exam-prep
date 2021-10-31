@@ -82,7 +82,7 @@ docker run -id --mount type=bind,source=/data/mysql,target=/var/lib/mysql mysql
 
 # CRI (Container Runtime Interface)
 
-The CRI was introduced to allow kubernetes to work with different container runtimes.
+The CRI was introduced to allow Kubernetes to work with different container runtimes.
 
 Originally the docker implementation code would be baked in with the Kubernetes source code. 
 
