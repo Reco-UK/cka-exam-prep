@@ -1,4 +1,15 @@
 apiVersion: v1
 kind: ClusterRoleBinding
 metadata:
-  name: nginx-ingress-cluster-role-binding
+  labels:
+    app.kubernetes.io/name: ingress-nginx
+    app.kubernetes.io/part-of: ingress-nginx
+  name: ingress-clusterrole-binding
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: ingress-clusterrole
+subjects:
+- kind: ServiceAccount
+  name: ingress-serviceaccount
+  namespace: ingress-space

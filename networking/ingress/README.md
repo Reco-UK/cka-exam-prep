@@ -55,3 +55,10 @@ In order for the ingress controller to make the required changes based on new re
 
 Ingress resources are used to create rules against the Ingress controller, which will details how the incoming traffic is to be routed to the backend services.
 
+These routing rules can either be based on the path within the url i.e. /web -> web-svc or the domain being visited i.e. web.my-domain.com -> web-svc
+
+Once these resources have been created you can view the details of the resource using the following command:
+
+```shell
+kubectl describe ingress <NAME>
+```

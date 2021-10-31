@@ -1,4 +1,26 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
+  name: ingress-host
 spec:
+  defaultBackend:
+    service:
+      name: app1-backend
+      port: 8080
+ rules:
+   - host: app1.mydomain.com
+     http:
+       paths:
+         - backend:
+             service:
+               name: app1-backend
+               port:
+                 number: 8080
+   - host: app2.mydomain.com
+     http:
+       paths:
+         - backend:
+             service:
+               name: app2-backend
+               port:
+                 number: 8080

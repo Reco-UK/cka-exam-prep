@@ -1,4 +1,15 @@
 apiVersion: v1
 kind: RoleBinding
 metadata:
-  name: nginx-ingress-role-binding
+  labels:
+    app.kubernetes.io/name: ingress-nginx
+    app.kubernetes.io/part-of: ingress-nginx
+  name: ingress-role-binding
+  namespace: ingress-space
+roleRef:
+    apiGroup: rbac.authorization.k8s.io
+    kind: Role
+    name: ingress-role
+  subjects:
+  - kind: ServiceAccount
+    name: ingress-serviceaccount
