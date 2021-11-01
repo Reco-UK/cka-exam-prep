@@ -116,4 +116,6 @@ Higher risk but easier setup
 This is where the ECTD instances are deployed on a separate instances to the control plane nodes.
 Lower Risk more complex setup
 
+Inboth of the above scenarios the ETCD instances will be peered with each other.
+
 **API Server is the only component which talks to ECTD**
